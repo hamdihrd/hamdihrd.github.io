@@ -1,0 +1,428 @@
+:root {
+  --font-family: "Poppins", sans-serif;
+  --normal-font: 400;
+  --bold-font: 600;
+  --bolder-font: 700;
+  --normal-background: #ffffff;
+  --normal-color: #000000;
+  --content-text: #333333;
+  --sidebar-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --sidebar-hover: rgba(255, 255, 255, 0.15);
+  --accent-color: #667eea;
+  /* --sidebar-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e, 100%); */
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  background: var(--normal-background);
+  color: var(--normal-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background: var(--normal-background);
+}
+
+/* ===== SIDEBAR STYLES ===== */
+.sidebar {
+  height: 100vh;
+  width: 280px;
+  background: var(--sidebar-bg);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* position: sticky; */
+  top: 0;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, #a8a8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+}
+
+/* Conteneur principal du thème */
+.sidebar-header .theme {
+  width: auto;
+  height: auto;
+  border-radius: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+/* Icônes */
+.theme-icon {
+  font-size: 18px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Cache l'icône avec la classe hidden */
+.theme-icon.hidden {
+  display: none;
+}
+
+/* Effet hover */
+.sidebar-header .theme:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Contenu du sidebar */
+.sidebar-content {
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+
+/* Navigation */
+.nav-menu {
+  flex: 1;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu ul li {
+  margin: 0.5rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.nav-menu ul li a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+/* Effet de survol moderne */
+.nav-menu ul li:hover {
+  transform: translateX(5px);
+}
+
+.nav-menu ul li:hover a {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  padding-left: 28px;
+}
+.active {
+  transform: translateX(5px);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  padding-left: 28px;
+}
+/* projects */
+#projects {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.cardProject {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet de brillance au survol */
+.cardProject::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.cardProject:hover::before {
+  left: 100%;
+}
+
+.cardProject:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.cardProject img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.cardProject:hover img {
+  transform: scale(1.02);
+}
+
+.cardProject h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fff, #a8a8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cardProject p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+/* Bouton corrigé */
+.cardProject a {
+  display: inline-block;
+  font-size: 0.9rem;
+  width: 100%;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+}
+
+/* Effet de vague au survol du bouton */
+.cardProject a::before {
+  content: "🌐  ";
+  transition: transform 0.3s ease;
+}
+
+.cardProject a:hover::before {
+  transform: translateX(5px);
+}
+
+.cardProject a:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cardProject a:active {
+  transform: translateY(0);
+} /* Sidebar Footer */
+.sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.sidebar-footer p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+/* ===== CONTENT STYLES ===== */
+.content {
+  height: 100vh;
+  padding: 2rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: var(--normal-background);
+}
+
+.content section {
+  min-height: 100vh;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  background: var(--normal-background);
+  color: var(--content-text);
+}
+
+.content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== DARK THEME ===== */
+
+body.dark-theme {
+  background: #1a1a2e;
+}
+
+body.dark-theme .content {
+  background: #1a1a2e;
+}
+
+body.dark-theme .content section {
+  background: #16213e;
+  color: #e0e0e0;
+}
+
+body.dark-theme .content h2 {
+  color: #a8a8ff;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar-header h1 {
+    display: none;
+  }
+
+  .sidebar-header {
+    justify-content: center;
+    padding: 1.5rem 0;
+  }
+
+  .profile h3,
+  .profile p {
+    display: none;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .nav-menu ul li a {
+    text-align: center;
+    padding: 12px 0;
+    font-size: 0;
+  }
+
+  .nav-menu ul li a::before {
+    content: "●";
+    font-size: 20px;
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .nav-menu ul li:hover a {
+    padding-left: 0;
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+
+  .sidebar-footer p {
+    font-size: 0.6rem;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+  }
+
+  .sidebar:hover {
+    width: 280px;
+  }
+
+  .sidebar:hover .sidebar-header h1 {
+    display: block;
+  }
+
+  .sidebar:hover .profile h3,
+  .sidebar:hover .profile p {
+    display: block;
+  }
+
+  .sidebar:hover .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  .sidebar:hover .nav-menu ul li a {
+    font-size: 1rem;
+    text-align: left;
+    padding: 12px 20px;
+  }
+
+  .sidebar:hover .nav-menu ul li a::before {
+    display: none;
+  }
+
+  .sidebar:hover .social-links a {
+    font-size: 1.5rem;
+  }
+
+  .sidebar:hover .sidebar-footer p {
+    white-space: normal;
+    writing-mode: horizontal-tb;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+}
